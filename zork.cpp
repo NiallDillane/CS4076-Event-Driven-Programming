@@ -76,36 +76,51 @@ void Zork::on_teleport_clicked()
 
 void Zork::on_goNorth_clicked()
 {
-    ui->outputText->append("Moved North");
-    Room* nextRoom = currentRoom->nextRoom("north");
-    currentRoom = nextRoom;
-    ui->outputText->append(QString::fromStdString(currentRoom->longDescription()));
+    go("north");
 }
 
 
 void Zork::on_goEast_clicked()
 {
-    ui->outputText->append("Moved East");
-    Room* nextRoom = currentRoom->nextRoom("east");
-    currentRoom = nextRoom;
-    ui->outputText->append(QString::fromStdString(currentRoom->longDescription()));
+    go("east");
 }
 
 void Zork::on_goSouth_clicked()
 {
-    ui->outputText->append("Moved South");
-    Room* nextRoom = currentRoom->nextRoom("south");
-    currentRoom = nextRoom;
-    ui->outputText->append(QString::fromStdString(currentRoom->longDescription()));
+    go("south");
 }
 
 void Zork::on_goWest_clicked()
 {
-    ui->outputText->append("Moved West");
-    Room* nextRoom = currentRoom->nextRoom("west");
-    currentRoom = nextRoom;
-    ui->outputText->append(QString::fromStdString(currentRoom->longDescription()));
+    go("west");
 }
+
+void Zork::go(string direction) {
+    Room* nextRoom = currentRoom->nextRoom(direction);
+    if (nextRoom == NULL)
+        ui->outputText->append("That's a dead-end!");
+    else{
+        ui->outputText->append(QString::fromStdString("Moving " + direction));
+        currentRoom = nextRoom;
+        ui->outputText->append(QString::fromStdString(currentRoom->longDescription()));
+    }
+}
+
+void Zork::on_map_clicked()
+{
+    ui->outputText->append(QString::fromStdString("            [j]        "));
+    ui->outputText->append(QString::fromStdString("             |         "));
+    ui->outputText->append(QString::fromStdString("             |         "));
+    ui->outputText->append(QString::fromStdString("[h] --- [f] --- [g]"));
+    ui->outputText->append(QString::fromStdString("             |         "));
+    ui->outputText->append(QString::fromStdString("             |         "));
+    ui->outputText->append(QString::fromStdString("[c] --- [a] --- [b]"));
+    ui->outputText->append(QString::fromStdString("             |         "));
+    ui->outputText->append(QString::fromStdString("             |         "));
+    ui->outputText->append(QString::fromStdString("[i] --- [d] --- [e]"));
+}
+
+
 
 /**
  * Given a command, process (that is: execute) the command.
@@ -119,27 +134,8 @@ bool Zork::processCommand(Command command) {
     }
 
     string commandWord = command.getCommandWord();
-    if (commandWord.compare("info") == 0)
-        printHelp();
 
-    else if (commandWord.compare("map") == 0)
-        {
-        cout << "        [j]        " << endl;
-        cout << "         |         " << endl;
-        cout << "         |         " << endl;
-        cout << "[h] --- [f] --- [g]" << endl;
-        cout << "         |         " << endl;
-        cout << "         |         " << endl;
-        cout << "[c] --- [a] --- [b]" << endl;
-        cout << "         |         " << endl;
-        cout << "         |         " << endl;
-        cout << "[i] --- [d] --- [e]" << endl;
-        }
-
-    else if (commandWord.compare("go") == 0)
-        goRoom(command);
-
-    else if (commandWord.compare("take") == 0)
+    if (commandWord.compare("take") == 0)
     {
         if (!command.hasSecondWord()) {
         cout << "incomplete input"<< endl;
@@ -155,17 +151,6 @@ bool Zork::processCommand(Command command) {
             cout << "index number " << + location << endl;
             cout << currentRoom->longDescription() << endl;
         }
-    }
-
-    else if (commandWord.compare("tp") == 0)
-    {
-
-        int randomIndex=0;
-        do
-            randomIndex = rand() % rooms.size();
-        while(currentRoom==rooms[randomIndex]);
-        currentRoom = rooms[randomIndex];
-        cout << currentRoom->longDescription() << endl;
     }
 
     else if (commandWord.compare("put") == 0)
@@ -198,37 +183,3 @@ void Zork::printHelp() {
     parser.showCommands();
 
 }
-
-void Zork::goRoom(Command command) {
-    if (!command.hasSecondWord()) {
-        cout << "incomplete input"<< endl;
-        return;
-    }
-
-    string direction = command.getSecondWord();
-
-    // Try to leave current room.
-    Room* nextRoom = currentRoom->nextRoom(direction);
-
-    if (nextRoom == NULL)
-        cout << "underdefined input"<< endl;
-    else {
-        currentRoom = nextRoom;
-        cout << currentRoom->longDescription() << endl;
-    }
-}
-
-string Zork::go(string direction) {
-    //Make the direction lowercase
-    //transform(direction.begin(), direction.end(), direction.begin(),:: tolower);
-    //Move to the next room
-    Room* nextRoom = currentRoom->nextRoom(direction);
-    if (nextRoom == NULL)
-        return("direction null");
-    else
-    {
-        currentRoom = nextRoom;
-        return currentRoom->longDescription();
-    }
-}
-

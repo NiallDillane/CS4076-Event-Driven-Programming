@@ -58,3 +58,6 @@ SUBDIRS += \
 
 DISTFILES += \
     ZorkGUI.pro.user
+
+RESOURCES += \
+    resources.qrc

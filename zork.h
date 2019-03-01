@@ -23,7 +23,7 @@ class Zork : public QMainWindow
 public:
     explicit Zork(QWidget *parent = nullptr);
     ~Zork();
-    string go(string direction);
+    void go(string direction);
 
 private slots:
     void on_teleport_clicked();
@@ -35,6 +35,8 @@ private slots:
     void on_goSouth_clicked();
 
     void on_goWest_clicked();
+
+    void on_map_clicked();
 
 private:
     Ui::Zork *ui;

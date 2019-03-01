@@ -2,7 +2,6 @@
 
 using namespace std;
 #include "ZorkUL.h"
-#include "ui_zork.h"
 
 //int main(int argc, char **argv) {
 //	ZorkUL temp;
