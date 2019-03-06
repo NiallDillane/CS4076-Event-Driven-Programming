@@ -1,6 +1,5 @@
 #include "zork.h"
 #include "ui_zork.h"
-#include "ZorkUL.h"
 
 Zork::Zork(QWidget *parent) :
     QMainWindow(parent),
@@ -108,16 +107,16 @@ void Zork::go(string direction) {
 
 void Zork::on_map_clicked()
 {
-    ui->outputText->append(QString::fromStdString("            [j]        "));
-    ui->outputText->append(QString::fromStdString("             |         "));
-    ui->outputText->append(QString::fromStdString("             |         "));
-    ui->outputText->append(QString::fromStdString("[h] --- [f] --- [g]"));
-    ui->outputText->append(QString::fromStdString("             |         "));
-    ui->outputText->append(QString::fromStdString("             |         "));
-    ui->outputText->append(QString::fromStdString("[c] --- [a] --- [b]"));
-    ui->outputText->append(QString::fromStdString("             |         "));
-    ui->outputText->append(QString::fromStdString("             |         "));
-    ui->outputText->append(QString::fromStdString("[i] --- [d] --- [e]"));
+    ui->outputText->append("            [j]        ");
+    ui->outputText->append("             |         ");
+    ui->outputText->append("             |         ");
+    ui->outputText->append("[h] --- [f] --- [g]");
+    ui->outputText->append("             |         ");
+    ui->outputText->append("             |         ");
+    ui->outputText->append("[c] --- [a] --- [b]");
+    ui->outputText->append("             |         ");
+    ui->outputText->append("             |         ");
+    ui->outputText->append("[i] --- [d] --- [e]");
 }
 
 
