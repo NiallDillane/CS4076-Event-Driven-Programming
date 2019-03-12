@@ -1,16 +1,16 @@
-/*#include "Character.h"
+#include "Character.h"
 
-Characterx::Characterx(string description) {
+Character::Character(string description) {
 	this->description = description;
 }
-void Characterx::addItem(Item &item) {
+void Character::addItem(Item &item) {
     itemsInCharacter.push_back(item);
 }
-void Characterx::addItem(Item *item) {
+void Character::addItem(Item *item) {
     itemsInCharacter.push_back(*item);
     delete item;
 }
-string Characterx::longDescription()
+string Character::longDescription()
 {
   string ret = this->description;
   ret += "\n Item list:\n";
@@ -18,6 +18,3 @@ string Characterx::longDescription()
     ret += "\t"+ (*i).getLongDescription() + "\n";
   return ret;
 }
-*/
-
-
