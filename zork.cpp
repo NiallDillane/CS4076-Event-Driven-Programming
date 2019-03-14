@@ -1,5 +1,6 @@
 #include "zork.h"
 #include "ui_zork.h"
+#include "gameplay.h"
 
 Zork::Zork(QWidget *parent) :
     QMainWindow(parent),
@@ -7,10 +8,9 @@ Zork::Zork(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    srand(time(0));
-    createRooms();
-    printWelcome();
-
+    gameplay play;
+    play.createRooms();
+    ui->outputText->append(play.printWelcome());
 }
 
 Zork::~Zork()
@@ -18,66 +18,22 @@ Zork::~Zork()
     delete ui;
 }
 
-void Zork::createRooms()  {
-    Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
-
-    a = new Room("a");
-        a->addItem(new Item("x", 1, 11));
-        a->addItem(new Item("y", 2, 22));
-    b = new Room("b");
-        b->addItem(new Item("xx", 3, 33));
-        b->addItem(new Item("yy", 4, 44));
-    c = new Room("c");
-    d = new Room("d");
-    e = new Room("e");
-    f = new Room("f");
-    g = new Room("g");
-    h = new Room("h");
-    i = new Room("i");
-    j = new Room("j");
-
-
-    rooms.push_back(a); rooms.push_back(b); rooms.push_back(c); rooms.push_back(d); rooms.push_back(e);
-    rooms.push_back(f); rooms.push_back(g); rooms.push_back(h); rooms.push_back(i); rooms.push_back(j);
-
-//             (N, E, S, W)
-    a->setExits(f, b, d, c);
-    b->setExits(NULL, NULL, NULL, a);
-    c->setExits(NULL, a, NULL, NULL);
-    d->setExits(a, e, NULL, i);
-    e->setExits(NULL, NULL, NULL, d);
-    f->setExits(j, g, a, h);
-    g->setExits(NULL, NULL, NULL, f);
-    h->setExits(NULL, f, NULL, NULL);
-    i->setExits(NULL, d, NULL, NULL);
-    j->setExits(NULL, NULL, f, NULL);
-
-        currentRoom = a;
-}
-
-void Zork::printWelcome() {
-    ui->outputText->append("\n--START--");
-    ui->outputText->append("info for help");
-    ui->outputText->append(QString::fromStdString(currentRoom->longDescription()));
-
-}
 
 void Zork::on_teleport_clicked()
 {
     ui->outputText->append("Teleported");
-    int randomIndex=0;
-    do
-        randomIndex = rand() % rooms.size();
-    while(currentRoom==rooms[randomIndex]);
-    currentRoom = rooms[randomIndex];
-    ui->outputText->append(QString::fromStdString(currentRoom->longDescription()));
+    play.teleport();
+    ui->outputText->append(QString::fromStdString(play.currentRoom->longDescription()));
+}
+
+void Zork::go(string direction) {
+    ui->outputText->append(play.go(direction));
 }
 
 void Zork::on_goNorth_clicked()
 {
     go("north");
 }
-
 
 void Zork::on_goEast_clicked()
 {
@@ -94,30 +50,13 @@ void Zork::on_goWest_clicked()
     go("west");
 }
 
-void Zork::go(string direction) {
-    Room* nextRoom = currentRoom->nextRoom(direction);
-    if (nextRoom == NULL)
-        ui->outputText->append("That's a dead-end!");
-    else{
-        ui->outputText->append(QString::fromStdString("Moving " + direction));
-        currentRoom = nextRoom;
-        ui->outputText->append(QString::fromStdString(currentRoom->longDescription()));
-    }
-}
-
 void Zork::on_map_clicked()
 {
-    ui->outputText->append("            [j]        ");
-    ui->outputText->append("             |         ");
-    ui->outputText->append("             |         ");
-    ui->outputText->append("[h] --- [f] --- [g]");
-    ui->outputText->append("             |         ");
-    ui->outputText->append("             |         ");
-    ui->outputText->append("[c] --- [a] --- [b]");
-    ui->outputText->append("             |         ");
-    ui->outputText->append("             |         ");
-    ui->outputText->append("[i] --- [d] --- [e]");
+    ui->outputText->append(play.map());
 }
+
+
+
 
 
 

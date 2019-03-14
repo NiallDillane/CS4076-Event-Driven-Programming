@@ -6,6 +6,7 @@
 #include "Parser.h"
 #include "Room.h"
 #include "item.h"
+#include "gameplay.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -24,6 +25,7 @@ public:
     explicit Zork(QWidget *parent = nullptr);
     ~Zork();
     void go(string direction);
+    gameplay play;
 
 private slots:
     void on_teleport_clicked();
