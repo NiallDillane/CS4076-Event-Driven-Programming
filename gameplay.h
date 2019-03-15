@@ -11,7 +11,7 @@ public:
     Room *currentRoom;
     void createRooms();
     vector<Room*> rooms;
-    QString printWelcome();
+    QString printWelcome(string);
     void teleport();
     QString map();
     QString go(string direction);

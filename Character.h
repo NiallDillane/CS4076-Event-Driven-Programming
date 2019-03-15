@@ -14,14 +14,18 @@ private:
     vector <Item> itemsInCharacter;
 
 public:
+    int health;
     void addItem(Item *item);
     void addItem(Item &item);
 
 public:
+    Character();
 	Character(string description);
 	string shortDescription();
 	string longDescription();
-
+    string name;
+    void setName(string name);
+    string getName();
 };
 
-#endif CHARACTER_H_
+#endif

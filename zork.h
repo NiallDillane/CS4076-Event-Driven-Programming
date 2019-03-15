@@ -7,6 +7,7 @@
 #include "Room.h"
 #include "item.h"
 #include "gameplay.h"
+#include "Character.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -25,7 +26,8 @@ public:
     explicit Zork(QWidget *parent = nullptr);
     ~Zork();
     void go(string direction);
-    gameplay play;
+    gameplay game;
+    Character player;
 
 private slots:
     void on_teleport_clicked();
@@ -46,7 +48,7 @@ private:
     Room *currentRoom;
     void createRooms();
     vector<Room*> rooms;
-
+    void takeButtons();
     void printWelcome();
     bool processCommand(Command command);
     void printHelp();

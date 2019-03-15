@@ -6,9 +6,9 @@ gameplay::gameplay()
     createRooms();
 }
 
-QString gameplay::printWelcome() {
+QString gameplay::printWelcome(string name) {
     string output =
-           string("\n--START--") +
+           string("\nWelcome, ") + (name) +
            string("\ninfo for help") +
            (this->currentRoom->longDescription());
     return QString::fromStdString(output);
@@ -38,15 +38,15 @@ void gameplay::createRooms()  {
 
 //             (N, E, S, W)
     a->setExits(f, b, d, c);
-    b->setExits(NULL, NULL, NULL, a);
-    c->setExits(NULL, a, NULL, NULL);
-    d->setExits(a, e, NULL, i);
-    e->setExits(NULL, NULL, NULL, d);
+    b->setExits(nullptr, nullptr, nullptr, a);
+    c->setExits(nullptr, a, nullptr, nullptr);
+    d->setExits(a, e, nullptr, i);
+    e->setExits(nullptr, nullptr, nullptr, d);
     f->setExits(j, g, a, h);
-    g->setExits(NULL, NULL, NULL, f);
-    h->setExits(NULL, f, NULL, NULL);
-    i->setExits(NULL, d, NULL, NULL);
-    j->setExits(NULL, NULL, f, NULL);
+    g->setExits(nullptr, nullptr, nullptr, f);
+    h->setExits(nullptr, f, nullptr, nullptr);
+    i->setExits(nullptr, d, nullptr, nullptr);
+    j->setExits(nullptr, nullptr, f, nullptr);
 
         currentRoom = a;
 }
