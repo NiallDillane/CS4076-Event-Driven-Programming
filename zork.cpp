@@ -22,7 +22,6 @@ Zork::Zork(QWidget *parent) :
     takeButtons();
     string charName = (QInputDialog::getText(parent,"Character Customisation","Enter your name:")).toStdString();
     player.setName(charName);
-    player.health=50;
     ui->outputText->append(game.printWelcome(player.getName()));
     ui->healthBar->setValue(player.health);
 }
@@ -32,29 +31,26 @@ Zork::~Zork()
     delete ui;
 }
 
-void Zork::gameWon(string desc){
+// Currently: moving North hurts, getting to Room H wins the game
+void Zork::gameOver(string title, string body, string desc){
     QMessageBox msgBox;
-    msgBox.setWindowTitle("Winner Winner");
-    msgBox.setText("WIN!\n" + QString::fromStdString(desc));
+    msgBox.setWindowTitle(QString::fromStdString(title));
+    msgBox.setText(QString::fromStdString(body) + QString::fromStdString(desc));
     QPushButton *abortButton = msgBox.addButton(QMessageBox::Close);
 
     msgBox.exec();
     if (msgBox.clickedButton() == abortButton) {
         QApplication::quit();
     }
+}
+
+void Zork::gameWon(string desc){
+    gameOver("Winner Winner", "WIN!\n", desc);
 
 }
 
 void Zork::gameLost(string desc){
-    QMessageBox msgBox;
-    msgBox.setWindowTitle("Game over");
-    msgBox.setText("L!\n" + QString::fromStdString(desc));
-    QPushButton *abortButton = msgBox.addButton(QMessageBox::Abort);
-
-    msgBox.exec();
-    if (msgBox.clickedButton() == abortButton) {
-        QApplication::quit();
-    }
+    gameOver("Game over.", "L!\n", desc);
 }
 
 void Zork::on_teleport_clicked()
@@ -77,6 +73,7 @@ void Zork::healthChange(int delta){
         ui->outputText->append("Ouch!");
     else if (delta > 0)
         ui->outputText->append("Yum!");
+
     player.health += delta;
     if(player.health<1){
         ui->healthBar->setValue(0);
@@ -111,23 +108,35 @@ void Zork::on_inventory_clicked()
     ui->outputText->append(QString::fromStdString(player.longDescription()));
 }
 
-void Zork::on_healthBar_valueChanged(int value)
+void Zork::on_TakeX_clicked()
 {
-    if(value<1){
-        ui->healthBar->setValue(0);
-        ui->outputText->append("Oh dear, you are dead.");
-    }
+     takeItem(ui->TakeX);
+}
+
+void Zork::on_TakeY_clicked()
+{
+    takeItem(ui->TakeY);
+}
+
+void Zork::on_TakeZ_clicked()
+{
+    takeItem(ui->TakeZ);
+}
+
+void Zork::takeItem(QPushButton* takeBtn){
+    string itemText = (takeBtn->text()).toStdString();
+    string r = "Take ";
+    string::size_type i = itemText.find(r);
+    if (i != std::string::npos)
+       itemText.erase(i, r.length());
+
+    Item toAdd = game.currentRoom->getItemFromString(itemText);
+    player.addItem(toAdd);
+    game.currentRoom->removeItemFromRoom(itemText);
+    takeBtn->setVisible(false);
 }
 
 void Zork::takeButtons(){
-//    QPushButton *slotButtons[3];
-//    QVBoxLayout* layout = new QVBoxLayout(ui->scrollAreaWidgetContents);
-//    for(int i = 0; i < game.currentRoom->numberOfItems(); i++)
-//    {
-//        slotButtons[i] = new QPushButton;
-//        slotButtons[i]->setText(QString::fromStdString((game.currentRoom->itemsInRoom[i]).getShortDescription()));
-//        ui->scrollAreaWidgetContents->layout()->addWidget(slotButtons[i]);
-//    }
 
     ui->TakeX->setVisible(false);
     ui->TakeY->setVisible(false);
@@ -150,114 +159,3 @@ void Zork::takeButtons(){
         }
     }
 }
-
-void Zork::on_TakeX_clicked()
-{
-    string itemText = (ui->TakeX->text()).toStdString();
-    string r = "Take ";
-    string::size_type i = itemText.find(r);
-    if (i != std::string::npos)
-       itemText.erase(i, r.length());
-
-    Item toAdd = game.currentRoom->getItemFromString(itemText);
-    player.addItem(toAdd);
-    game.currentRoom->removeItemFromRoom(itemText);
-    ui->TakeX->setVisible(false);
-}
-
-void Zork::on_TakeY_clicked()
-{
-    string itemText = (ui->TakeY->text()).toStdString();
-    string r = "Take ";
-    string::size_type i = itemText.find(r);
-    if (i != std::string::npos)
-       itemText.erase(i, r.length());
-
-    Item toAdd = game.currentRoom->getItemFromString(itemText);
-    player.addItem(toAdd);
-    game.currentRoom->removeItemFromRoom(itemText);
-    ui->TakeY->setVisible(false);
-}
-
-void Zork::on_TakeZ_clicked()
-{
-    string itemText = (ui->TakeZ->text()).toStdString();
-    string r = "Take ";
-    string::size_type i = itemText.find(r);
-    if (i != std::string::npos)
-       itemText.erase(i, r.length());
-
-    Item toAdd = game.currentRoom->getItemFromString(itemText);
-    player.addItem(toAdd);
-    game.currentRoom->removeItemFromRoom(itemText);
-    ui->TakeZ->setVisible(false);
-}
-
-
-
-
-
-
-
-/**
- * Below this line is ex-ZorkUL code
- * Either yet to be implemented
- * or to be deleted
- */
-//bool Zork::processCommand(Command command) {
-//    if (command.isUnknown()) {
-//        cout << "invalid input"<< endl;
-//        return false;
-//    }
-
-//    string commandWord = command.getCommandWord();
-
-//    if (commandWord.compare("take") == 0)
-//    {
-//        if (!command.hasSecondWord()) {
-//        cout << "incomplete input"<< endl;
-//        }
-//        else
-//         if (command.hasSecondWord()) {
-//        cout << "you're trying to take " + command.getSecondWord() << endl;
-//        int location = currentRoom->removeItemFromRoom(command.getSecondWord());
-//        if (location  < 0 )
-//            cout << "item is not in room" << endl;
-//        else
-//            cout << "item is in room" << endl;
-//            cout << "index number " << + location << endl;
-//            cout << currentRoom->longDescription() << endl;
-//        }
-//    }
-
-//    else if (commandWord.compare("put") == 0)
-//    {
-
-//    }
-
-//    {
-//    if (!command.hasSecondWord()) {
-//        cout << "incomplete input"<< endl;
-//        }
-//        else
-//            if (command.hasSecondWord()) {
-//            cout << "you're adding " + command.getSecondWord() << endl;
-//            itemsInRoom.push_Back;
-//        }
-//    }
-
-//    else if (commandWord.compare("quit") == 0) {
-//        if (command.hasSecondWord())
-//            cout << "overdefined input"<< endl;
-//        else
-//            return true; /**signal to quit*/
-//    }
-//    return false;
-//}
-///** COMMANDS **/
-//void Zork::printHelp() {
-//    cout << "\nvalid inputs are; " << endl;
-//    parser.showCommands();
-
-//}
-

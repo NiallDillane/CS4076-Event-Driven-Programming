@@ -15,7 +15,7 @@ private:
     vector <Item> itemsInCharacter;
 
 public:
-    int health;
+    int health=50;
     void addItem(Item *item);
     void addItem(Item &item);
 

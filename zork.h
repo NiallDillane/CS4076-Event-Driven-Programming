@@ -43,9 +43,6 @@ private slots:
 
     void on_map_clicked();
 
-
-    void on_healthBar_valueChanged(int value);
-
     void on_TakeX_clicked();
 
     void on_inventory_clicked();
@@ -72,7 +69,8 @@ private:
     void healthChange(int delta);
     void gameWon(string desc);
     void gameLost(string desc);
-    void takeItem(QPushButton takeBtn);
+    void takeItem(QPushButton* takeBtn);
+    void gameOver(string title, string body, string desc);
 };
 
 #endif // ZORK_H

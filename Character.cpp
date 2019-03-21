@@ -25,8 +25,8 @@ void Character::addItem(Item *item) {
 }
 string Character::longDescription(){
   string ret = this->description;
-  ret += "\n Inventory:\n";
+  ret += "\nInventory:\n";
   for (vector<Item>::iterator i = itemsInCharacter.begin(); i != itemsInCharacter.end(); i++)
-    ret += "\t"+ (*i).getLongDescription();
+    ret += "\t"+ to_string((i-itemsInCharacter.begin())+1) + ": " + (*i).getLongDescription();
   return ret;
 }
