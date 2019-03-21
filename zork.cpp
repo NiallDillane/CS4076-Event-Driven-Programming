@@ -4,6 +4,7 @@
 
 #include <QCommandLinkButton>
 #include <QInputDialog>
+#include <QProgressBar>
 
 Zork::Zork(QWidget *parent) :
     QMainWindow(parent),
@@ -21,6 +22,7 @@ Zork::Zork(QWidget *parent) :
     string charName = (QInputDialog::getText(parent,"Character Customisation","Enter your name:")).toStdString();
     player.setName(charName);
     ui->outputText->append(game.printWelcome(player.getName()));
+    ui->healthBar->setValue(30);
 }
 
 Zork::~Zork()
@@ -44,6 +46,7 @@ void Zork::go(string direction) {
 
 void Zork::on_goNorth_clicked(){
     go("north");
+    ui->healthBar->setValue(ui->healthBar->value()-20);
 }
 
 void Zork::on_goEast_clicked(){
@@ -62,6 +65,12 @@ void Zork::on_map_clicked(){
     ui->outputText->append(game.map());
 }
 
+void Zork::on_healthBar_valueChanged(int value)
+{
+    if(ui->healthBar->value()<1)
+        ui->outputText->append("Oh dear, you are dead.");
+}
+
 void Zork::takeButtons(){
 //    QPushButton *slotButtons[3];
 //    QVBoxLayout* layout = new QVBoxLayout(ui->scrollAreaWidgetContents);
@@ -76,7 +85,7 @@ void Zork::takeButtons(){
     ui->TakeY->setVisible(false);
     ui->TakeZ->setVisible(false);
 
-    // check if room has items
+    // check if room has (max 3) items
     // cycle through list of items, activating buttons and setting text to item description
     if(game.currentRoom->numberOfItems()!=0){
         if(game.currentRoom->numberOfItems()>0){
@@ -94,6 +103,12 @@ void Zork::takeButtons(){
     }
 }
 
+void Zork::on_TakeX_clicked()
+{
+//    player.addItem(currentRoom->itemsInRoom[0]);
+    game.currentRoom->removeItemFromRoom("x");
+}
+
 
 
 
@@ -103,59 +118,60 @@ void Zork::takeButtons(){
  * If this command ends the ZorkUL game, true is returned, otherwise false is
  * returned.
  */
-bool Zork::processCommand(Command command) {
-    if (command.isUnknown()) {
-        cout << "invalid input"<< endl;
-        return false;
-    }
+//bool Zork::processCommand(Command command) {
+//    if (command.isUnknown()) {
+//        cout << "invalid input"<< endl;
+//        return false;
+//    }
 
-    string commandWord = command.getCommandWord();
+//    string commandWord = command.getCommandWord();
 
-    if (commandWord.compare("take") == 0)
-    {
-        if (!command.hasSecondWord()) {
-        cout << "incomplete input"<< endl;
-        }
-        else
-         if (command.hasSecondWord()) {
-        cout << "you're trying to take " + command.getSecondWord() << endl;
-        int location = currentRoom->isItemInRoom(command.getSecondWord());
-        if (location  < 0 )
-            cout << "item is not in room" << endl;
-        else
-            cout << "item is in room" << endl;
-            cout << "index number " << + location << endl;
-            cout << currentRoom->longDescription() << endl;
-        }
-    }
+//    if (commandWord.compare("take") == 0)
+//    {
+//        if (!command.hasSecondWord()) {
+//        cout << "incomplete input"<< endl;
+//        }
+//        else
+//         if (command.hasSecondWord()) {
+//        cout << "you're trying to take " + command.getSecondWord() << endl;
+//        int location = currentRoom->removeItemFromRoom(command.getSecondWord());
+//        if (location  < 0 )
+//            cout << "item is not in room" << endl;
+//        else
+//            cout << "item is in room" << endl;
+//            cout << "index number " << + location << endl;
+//            cout << currentRoom->longDescription() << endl;
+//        }
+//    }
 
-    else if (commandWord.compare("put") == 0)
-    {
+//    else if (commandWord.compare("put") == 0)
+//    {
 
-    }
-    /*
-    {
-    if (!command.hasSecondWord()) {
-        cout << "incomplete input"<< endl;
-        }
-        else
-            if (command.hasSecondWord()) {
-            cout << "you're adding " + command.getSecondWord() << endl;
-            itemsInRoom.push_Back;
-        }
-    }
-*/
-    else if (commandWord.compare("quit") == 0) {
-        if (command.hasSecondWord())
-            cout << "overdefined input"<< endl;
-        else
-            return true; /**signal to quit*/
-    }
-    return false;
-}
-/** COMMANDS **/
-void Zork::printHelp() {
-    cout << "\nvalid inputs are; " << endl;
-    parser.showCommands();
+//    }
 
-}
+//    {
+//    if (!command.hasSecondWord()) {
+//        cout << "incomplete input"<< endl;
+//        }
+//        else
+//            if (command.hasSecondWord()) {
+//            cout << "you're adding " + command.getSecondWord() << endl;
+//            itemsInRoom.push_Back;
+//        }
+//    }
+
+//    else if (commandWord.compare("quit") == 0) {
+//        if (command.hasSecondWord())
+//            cout << "overdefined input"<< endl;
+//        else
+//            return true; /**signal to quit*/
+//    }
+//    return false;
+//}
+///** COMMANDS **/
+//void Zork::printHelp() {
+//    cout << "\nvalid inputs are; " << endl;
+//    parser.showCommands();
+
+//}
+

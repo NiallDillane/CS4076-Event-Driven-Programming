@@ -26,8 +26,7 @@ public:
 	Room* nextRoom(string direction);
     void addItem(Item *inItem);
     string displayItem();
-    int isItemInRoom(string inString);
-    void removeItemFromRoom(int location);
+    void removeItemFromRoom(string inString);
     vector <Item> itemsInRoom;
 };
 

@@ -33,7 +33,6 @@ SOURCES += \
     item.cpp \
     Parser.cpp \
     Room.cpp \
-    ZorkUL.cpp \
     gameplay.cpp
 
 HEADERS += \

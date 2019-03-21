@@ -42,6 +42,11 @@ private slots:
 
     void on_map_clicked();
 
+
+    void on_healthBar_valueChanged(int value);
+
+    void on_TakeX_clicked();
+
 private:
     Ui::Zork *ui;
     Parser parser;
