@@ -33,13 +33,22 @@ Zork::~Zork()
 }
 
 void Zork::gameWon(string desc){
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Winner Winner");
+    msgBox.setText("WIN!\n" + QString::fromStdString(desc));
+    QPushButton *abortButton = msgBox.addButton(QMessageBox::Close);
+
+    msgBox.exec();
+    if (msgBox.clickedButton() == abortButton) {
+        QApplication::quit();
+    }
 
 }
 
 void Zork::gameLost(string desc){
     QMessageBox msgBox;
     msgBox.setWindowTitle("Game over");
-    msgBox.setText(QString::fromStdString(desc));
+    msgBox.setText("L!\n" + QString::fromStdString(desc));
     QPushButton *abortButton = msgBox.addButton(QMessageBox::Abort);
 
     msgBox.exec();
@@ -58,6 +67,8 @@ void Zork::on_teleport_clicked()
 
 void Zork::go(string direction) {
     ui->outputText->append(game.go(direction));
+    if(game.currentRoom->type=="win")
+        gameWon("You have reached the magical destination");
     takeButtons();
 }
 
@@ -177,6 +188,7 @@ void Zork::on_TakeZ_clicked()
     game.currentRoom->removeItemFromRoom(itemText);
     ui->TakeZ->setVisible(false);
 }
+
 
 
 

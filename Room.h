@@ -12,14 +12,15 @@ using std::vector;
 class Room {
 
 private:
-	string description;
+    string description;
 	map<string, Room*> exits;
     string exitString();
 
 
 public:
     int numberOfItems();
-	Room(string description);
+    string type;
+    Room(string description, string type);
 	void setExits(Room *north, Room *east, Room *south, Room *west);
 	string shortDescription();
     string longDescription();

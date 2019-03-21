@@ -8,8 +8,8 @@ gameplay::gameplay()
 
 QString gameplay::printWelcome(string name) {
     string output =
-           string("\nWelcome, ") + (name) +
-           string("\ninfo for help") +
+           string("\nWelcome, ") + (name) + "!" +
+           string("\n<-- Your health is on the left\n") +
            (this->currentRoom->longDescription());
     return QString::fromStdString(output);
 }
@@ -17,20 +17,20 @@ QString gameplay::printWelcome(string name) {
 void gameplay::createRooms()  {
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
 
-    a = new Room("a");
+    a = new Room("a", "NA");
         a->addItem(new Item("x", 1, 11));
         a->addItem(new Item("y", 2, 22));
-    b = new Room("b");
+    b = new Room("b", "NA");
         b->addItem(new Item("xx", 3, 33));
         b->addItem(new Item("yy", 4, 44));
-    c = new Room("c");
-    d = new Room("d");
-    e = new Room("e");
-    f = new Room("f");
-    g = new Room("g");
-    h = new Room("h");
-    i = new Room("i");
-    j = new Room("j");
+    c = new Room("c", "NA");
+    d = new Room("d", "NA");
+    e = new Room("e", "NA");
+    f = new Room("f", "NA");
+    g = new Room("g", "NA");
+    h = new Room("h", "win");
+    i = new Room("i", "NA");
+    j = new Room("j", "NA");
 
 
     rooms.push_back(a); rooms.push_back(b); rooms.push_back(c); rooms.push_back(d); rooms.push_back(e);

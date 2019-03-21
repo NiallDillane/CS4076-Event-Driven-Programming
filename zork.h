@@ -8,6 +8,7 @@
 #include "item.h"
 #include "gameplay.h"
 #include "Character.h"
+#include <QPushButton>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -71,6 +72,7 @@ private:
     void healthChange(int delta);
     void gameWon(string desc);
     void gameLost(string desc);
+    void takeItem(QPushButton takeBtn);
 };
 
 #endif // ZORK_H

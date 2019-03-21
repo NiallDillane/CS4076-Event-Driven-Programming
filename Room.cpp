@@ -2,8 +2,9 @@
 #include "Command.h"
 
 
-Room::Room(string description) {
+Room::Room(string description, string type) {
 	this->description = description;
+    this->type = type;
 }
 
 void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
