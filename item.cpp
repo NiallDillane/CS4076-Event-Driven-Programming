@@ -11,6 +11,8 @@ Item::Item(string inDescription) {
 	description = inDescription;
 }
 
+Item::Item(){}
+
 void Item::setWeight(int inWeightGrams)
 {
     if (inWeightGrams > 9999 || inWeightGrams < 0)
@@ -42,6 +44,6 @@ string Item::getShortDescription()
 
 string Item::getLongDescription()
 {
-	return " item(s), " + description + ".\n";
+    return "Item: " + description + ".\n";
 }
 

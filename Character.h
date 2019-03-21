@@ -3,6 +3,7 @@
 #include "ZorkUL.h"
 
 #include <string>
+#include <sstream>
 using namespace std;
 #include <vector>
 using std::vector;
@@ -26,6 +27,7 @@ public:
     string name;
     void setName(string name);
     string getName();
+    string getHealth();
 };
 
 #endif

@@ -47,6 +47,12 @@ private slots:
 
     void on_TakeX_clicked();
 
+    void on_inventory_clicked();
+
+    void on_TakeY_clicked();
+
+    void on_TakeZ_clicked();
+
 private:
     Ui::Zork *ui;
     Parser parser;
@@ -62,6 +68,9 @@ private:
     void createItems();
     void displayItems();
 
+    void healthChange(int delta);
+    void gameWon(string desc);
+    void gameLost(string desc);
 };
 
 #endif // ZORK_H

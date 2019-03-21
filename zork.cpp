@@ -4,6 +4,7 @@
 
 #include <QCommandLinkButton>
 #include <QInputDialog>
+#include <QMessageBox>
 #include <QProgressBar>
 
 Zork::Zork(QWidget *parent) :
@@ -21,8 +22,9 @@ Zork::Zork(QWidget *parent) :
     takeButtons();
     string charName = (QInputDialog::getText(parent,"Character Customisation","Enter your name:")).toStdString();
     player.setName(charName);
+    player.health=50;
     ui->outputText->append(game.printWelcome(player.getName()));
-    ui->healthBar->setValue(30);
+    ui->healthBar->setValue(player.health);
 }
 
 Zork::~Zork()
@@ -30,6 +32,21 @@ Zork::~Zork()
     delete ui;
 }
 
+void Zork::gameWon(string desc){
+
+}
+
+void Zork::gameLost(string desc){
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Game over");
+    msgBox.setText(QString::fromStdString(desc));
+    QPushButton *abortButton = msgBox.addButton(QMessageBox::Abort);
+
+    msgBox.exec();
+    if (msgBox.clickedButton() == abortButton) {
+        QApplication::quit();
+    }
+}
 
 void Zork::on_teleport_clicked()
 {
@@ -44,9 +61,18 @@ void Zork::go(string direction) {
     takeButtons();
 }
 
-void Zork::on_goNorth_clicked(){
+void Zork::healthChange(int delta){
+    player.health += delta;
+    if(player.health<1){
+        ui->healthBar->setValue(0);
+        gameLost("Oh dear, you are dead.");
+    }
+    ui->healthBar->setValue(player.health);
+}
+
+void Zork::on_goNorth_clicked() {
     go("north");
-    ui->healthBar->setValue(ui->healthBar->value()-20);
+    healthChange(-20);
 }
 
 void Zork::on_goEast_clicked(){
@@ -65,10 +91,17 @@ void Zork::on_map_clicked(){
     ui->outputText->append(game.map());
 }
 
+void Zork::on_inventory_clicked()
+{
+    ui->outputText->append(QString::fromStdString(player.longDescription()));
+}
+
 void Zork::on_healthBar_valueChanged(int value)
 {
-    if(ui->healthBar->value()<1)
+    if(value<1){
+        ui->healthBar->setValue(0);
         ui->outputText->append("Oh dear, you are dead.");
+    }
 }
 
 void Zork::takeButtons(){
@@ -105,18 +138,55 @@ void Zork::takeButtons(){
 
 void Zork::on_TakeX_clicked()
 {
-//    player.addItem(currentRoom->itemsInRoom[0]);
-    game.currentRoom->removeItemFromRoom("x");
+    string itemText = (ui->TakeX->text()).toStdString();
+    string r = "Take ";
+    string::size_type i = itemText.find(r);
+    if (i != std::string::npos)
+       itemText.erase(i, r.length());
+
+    Item toAdd = game.currentRoom->getItemFromString(itemText);
+    player.addItem(toAdd);
+    game.currentRoom->removeItemFromRoom(itemText);
+    ui->TakeX->setVisible(false);
+}
+
+void Zork::on_TakeY_clicked()
+{
+    string itemText = (ui->TakeY->text()).toStdString();
+    string r = "Take ";
+    string::size_type i = itemText.find(r);
+    if (i != std::string::npos)
+       itemText.erase(i, r.length());
+
+    Item toAdd = game.currentRoom->getItemFromString(itemText);
+    player.addItem(toAdd);
+    game.currentRoom->removeItemFromRoom(itemText);
+    ui->TakeY->setVisible(false);
+}
+
+void Zork::on_TakeZ_clicked()
+{
+    string itemText = (ui->TakeZ->text()).toStdString();
+    string r = "Take ";
+    string::size_type i = itemText.find(r);
+    if (i != std::string::npos)
+       itemText.erase(i, r.length());
+
+    Item toAdd = game.currentRoom->getItemFromString(itemText);
+    player.addItem(toAdd);
+    game.currentRoom->removeItemFromRoom(itemText);
+    ui->TakeZ->setVisible(false);
 }
 
 
 
 
 
+
 /**
- * Given a command, process (that is: execute) the command.
- * If this command ends the ZorkUL game, true is returned, otherwise false is
- * returned.
+ * Below this line is ex-ZorkUL code
+ * Either yet to be implemented
+ * or to be deleted
  */
 //bool Zork::processCommand(Command command) {
 //    if (command.isUnknown()) {

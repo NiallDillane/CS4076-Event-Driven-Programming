@@ -17,6 +17,7 @@ private:
 public:
     Item (string description, int inWeight, float inValue);
     Item (string description);
+    Item ();
 	string getShortDescription();
     string getLongDescription();
 	int getWeight();

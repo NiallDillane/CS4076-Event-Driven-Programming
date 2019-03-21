@@ -43,8 +43,8 @@ HEADERS += \
     item.h \
     Parser.h \
     Room.h \
-    ZorkUL.h \
-    gameplay.h
+    gameplay.h \
+    ZorkUL.h
 
 FORMS += \
         zork.ui \

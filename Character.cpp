@@ -11,6 +11,11 @@ void Character::setName(string name){
 string Character::getName(){
     return this->name;
 }
+string Character::getHealth(){
+    std::ostringstream stm ;
+    stm << this->health ;
+    return stm.str();
+}
 void Character::addItem(Item &item) {
     itemsInCharacter.push_back(item);
 }
@@ -20,8 +25,8 @@ void Character::addItem(Item *item) {
 }
 string Character::longDescription(){
   string ret = this->description;
-  ret += "\n Item list:\n";
+  ret += "\n Inventory:\n";
   for (vector<Item>::iterator i = itemsInCharacter.begin(); i != itemsInCharacter.end(); i++)
-    ret += "\t"+ (*i).getLongDescription() + "\n";
+    ret += "\t"+ (*i).getLongDescription();
   return ret;
 }
