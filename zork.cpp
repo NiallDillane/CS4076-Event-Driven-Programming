@@ -73,6 +73,10 @@ void Zork::go(string direction) {
 }
 
 void Zork::healthChange(int delta){
+    if(delta < 0)
+        ui->outputText->append("Ouch!");
+    else if (delta > 0)
+        ui->outputText->append("Yum!");
     player.health += delta;
     if(player.health<1){
         ui->healthBar->setValue(0);
