@@ -28,23 +28,16 @@ SOURCES += \
         main.cpp \
         zork.cpp \
     Character.cpp \
-    Command.cpp \
-    CommandWords.cpp \
     item.cpp \
-    Parser.cpp \
     Room.cpp \
     gameplay.cpp
 
 HEADERS += \
         zork.h \
     Character.h \
-    Command.h \
-    CommandWords.h \
     item.h \
-    Parser.h \
     Room.h \
-    gameplay.h \
-    ZorkUL.h
+    gameplay.h
 
 FORMS += \
         zork.ui \

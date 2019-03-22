@@ -2,16 +2,18 @@
 #define ZORK_H
 
 #include <QMainWindow>
-#include "Command.h"
-#include "Parser.h"
-#include "Room.h"
-#include "item.h"
-#include "gameplay.h"
-#include "Character.h"
+#include <QCommandLinkButton>
+#include <QInputDialog>
+#include <QMessageBox>
+#include <QProgressBar>
 #include <QPushButton>
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Room.h"
+#include "item.h"
+#include "gameplay.h"
+#include "Character.h"
 using namespace std;
 using std::vector;
 
@@ -53,15 +55,12 @@ private slots:
 
 private:
     Ui::Zork *ui;
-    Parser parser;
     Room *currentRoom;
     void createRooms();
     vector<Room*> rooms;
     void takeButtons();
     void printWelcome();
-    bool processCommand(Command command);
     void printHelp();
-    void goRoom(Command command);
     void tp();
     void createItems();
     void displayItems();

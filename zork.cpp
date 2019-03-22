@@ -1,11 +1,5 @@
 #include "zork.h"
 #include "ui_zork.h"
-#include "gameplay.h"
-
-#include <QCommandLinkButton>
-#include <QInputDialog>
-#include <QMessageBox>
-#include <QProgressBar>
 
 Zork::Zork(QWidget *parent) :
     QMainWindow(parent),
