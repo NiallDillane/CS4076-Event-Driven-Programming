@@ -18,11 +18,11 @@ void gameplay::createRooms()  {
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
 
     a = new Room("a", "NA");
-        a->addItem(new Item("x", 1, 11));
-        a->addItem(new Item("y", 2, 22));
+        a->addItem(new Item("Apple", "health", 25));
+        a->addItem(new Item("Spikes", "health", -15));
     b = new Room("b", "NA");
-        b->addItem(new Item("xx", 3, 33));
-        b->addItem(new Item("yy", 4, 44));
+        b->addItem(new Item("Bomb", "health", -50));
+        b->addItem(new Item("Banana", "health", 40));
     c = new Room("c", "NA");
     d = new Room("d", "NA");
     e = new Room("e", "NA");

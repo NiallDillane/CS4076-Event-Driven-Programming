@@ -1,3 +1,8 @@
+/*  Moving North will hurt
+ *  Items may heal or hurt you
+ *  Room H will win the game
+ */
+
 #include "zork.h"
 #include "ui_zork.h"
 
@@ -25,7 +30,7 @@ Zork::~Zork()
     delete ui;
 }
 
-// Currently: moving North hurts, getting to Room H wins the game
+
 void Zork::gameOver(string title, string body, string desc){
     QMessageBox msgBox;
     msgBox.setWindowTitle(QString::fromStdString(title));
@@ -53,6 +58,8 @@ void Zork::on_teleport_clicked()
     game.teleport();
     ui->outputText->append(QString::fromStdString(game.currentRoom->longDescription()));
     takeButtons();
+    if(game.currentRoom->type=="win")
+        gameWon("You have reached the magical destination");
 }
 
 void Zork::go(string direction) {
@@ -128,6 +135,9 @@ void Zork::takeItem(QPushButton* takeBtn){
     player.addItem(toAdd);
     game.currentRoom->removeItemFromRoom(itemText);
     takeBtn->setVisible(false);
+
+    if(toAdd.getType()=="health")
+        healthChange(toAdd.getValue());
 }
 
 void Zork::takeButtons(){
