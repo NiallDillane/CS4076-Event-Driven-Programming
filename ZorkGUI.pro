@@ -30,14 +30,16 @@ SOURCES += \
     Character.cpp \
     item.cpp \
     Room.cpp \
-    gameplay.cpp
+    gameplay.cpp \
+    food.cpp
 
 HEADERS += \
         zork.h \
     Character.h \
     item.h \
     Room.h \
-    gameplay.h
+    gameplay.h \
+    food.h
 
 FORMS += \
         zork.ui \

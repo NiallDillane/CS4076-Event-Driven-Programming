@@ -70,6 +70,7 @@ void Zork::go(string direction) {
 }
 
 void Zork::healthChange(int delta){
+    ui->outputText->append(QString::fromStdString(to_string(delta)));
     if(delta < 0)
         ui->outputText->append("Ouch!");
     else if (delta > 0)
@@ -136,8 +137,7 @@ void Zork::takeItem(QPushButton* takeBtn){
     game.currentRoom->removeItemFromRoom(itemText);
     takeBtn->setVisible(false);
 
-    if(toAdd.getType()=="health")
-        healthChange(toAdd.getValue());
+    healthChange(toAdd.getValue());
 }
 
 void Zork::takeButtons(){

@@ -18,7 +18,7 @@ void gameplay::createRooms()  {
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
 
     a = new Room("a", "NA");
-        a->addItem(new Item("Apple", "health", 25));
+        a->addItem(new food("Apple", 25));
         a->addItem(new Item("Spikes", "health", -15));
     b = new Room("b", "NA");
         b->addItem(new Item("Bomb", "health", -50));

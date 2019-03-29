@@ -2,6 +2,8 @@
 #define GAMEPLAY_H
 #include <QMainWindow>
 #include "Room.h"
+#include "item.h"
+#include "food.h"
 using std::string;
 
 class gameplay
