@@ -23,6 +23,7 @@ void Character::addItem(Item *item) {
     itemsInCharacter.push_back(*item);
     delete item;
 }
+
 string Character::longDescription(){
   string ret = this->description;
   ret += "\nInventory:\n";

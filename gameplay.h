@@ -6,7 +6,7 @@ using std::string;
 
 class gameplay
 {
-public:
+private:
     gameplay();
     Room *currentRoom;
     void createRooms();
@@ -15,7 +15,8 @@ public:
     void teleport();
     QString map();
     QString go(string direction);
-private:
+public:
+    friend class Zork;
 };
 
 #endif // GAMEPLAY_H
