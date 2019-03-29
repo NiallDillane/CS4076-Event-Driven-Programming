@@ -943,7 +943,8 @@ QProgressBar::chunk {
     border-radius: 10px;
     font: bold 14px;
     min-width: 10em;
-    padding: 2px;</string>
+    padding: 2px;
+background-image: url(:/resources/images/mapIconSmall.png);</string>
          </property>
          <property name="text">
           <string>Map</string>
