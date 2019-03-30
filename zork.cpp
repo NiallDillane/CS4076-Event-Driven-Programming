@@ -52,20 +52,23 @@ void Zork::gameLost(string desc){
     gameOver("Game over.", "L!\n", desc);
 }
 
+void Zork::checkWin(){/*
+    if(game.currentRoom->type=="win")
+        gameWon("You have reached the magical destination");*/
+}
+
 void Zork::on_teleport_clicked()
 {
     ui->outputText->append("Teleported");
     game.teleport();
     ui->outputText->append(QString::fromStdString(game.currentRoom->longDescription()));
     takeButtons();
-    if(game.currentRoom->type=="win")
-        gameWon("You have reached the magical destination");
+    checkWin();
 }
 
 void Zork::go(string direction) {
     ui->outputText->append(game.go(direction));
-    if(game.currentRoom->type=="win")
-        gameWon("You have reached the magical destination");
+    checkWin();
     takeButtons();
 }
 

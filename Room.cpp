@@ -17,7 +17,22 @@ void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
 		exits["west"] = west;
 }
 
-string Room::shortDescription() {
+bool operator ==(Room const & r1, Room const & r2){
+    if((r1.description).compare(r2.description)==0){
+        return true;
+    }
+    return false;
+}
+
+bool Room::equals( Room r2){
+    if(*this==r2)
+        return true;
+    else {
+        return false;
+    }
+}
+
+const string Room::shortDescription() {
 	return description;
 }
 

@@ -12,7 +12,6 @@ using std::vector;
 class Room {
 
 private:
-    string description;
 	map<string, Room*> exits;
     string exitString();
 
@@ -22,7 +21,7 @@ public:
     string type;
     Room(string description, string type);
 	void setExits(Room *north, Room *east, Room *south, Room *west);
-	string shortDescription();
+    const string shortDescription();
     string longDescription();
 	Room* nextRoom(string direction);
     void addItem(Item *inItem);
@@ -30,6 +29,8 @@ public:
     void removeItemFromRoom(string inString);
     vector <Item*> itemsInRoom;
     Item* getItemFromString(string itemDesc);
+    string description;
+    bool equals(Room r2);
 };
 
 #endif

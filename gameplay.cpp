@@ -55,7 +55,7 @@ void gameplay::teleport(){
     int randomIndex=0;
     do
         randomIndex = rand() % (this->rooms).size();
-    while(this->currentRoom==(this->rooms)[randomIndex]);
+    while((*(this->currentRoom)).equals(*((this->rooms)[randomIndex])));
     this->currentRoom = (this->rooms)[randomIndex];
 }
 

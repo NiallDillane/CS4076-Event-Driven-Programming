@@ -31,7 +31,6 @@ public:
     void go(string direction);
     gameplay game;
     Character player;
-
 private slots:
     void on_teleport_clicked();
 
@@ -70,6 +69,7 @@ private:
     void gameLost(string desc);
     void takeItem(QPushButton* takeBtn);
     void gameOver(string title, string body, string desc);
+    void checkWin();
 };
 
 #endif // ZORK_H
