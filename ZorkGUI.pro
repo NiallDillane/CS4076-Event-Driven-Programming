@@ -26,20 +26,20 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        zork.cpp \
     Character.cpp \
-    item.cpp \
     Room.cpp \
-    gameplay.cpp \
-    food.cpp
+    Food.cpp \
+    Item.cpp \
+    Gameplay.cpp \
+    Zork.cpp
 
 HEADERS += \
-        zork.h \
     Character.h \
-    item.h \
     Room.h \
-    gameplay.h \
-    food.h
+    Food.h \
+    Item.h \
+    Gameplay.h \
+    Zork.h
 
 FORMS += \
         zork.ui \

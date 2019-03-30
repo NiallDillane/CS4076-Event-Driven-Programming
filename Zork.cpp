@@ -3,7 +3,7 @@
  *  Room H will win the game
  */
 
-#include "zork.h"
+#include "Zork.h"
 #include "ui_zork.h"
 
 Zork::Zork(QWidget *parent) :
@@ -52,9 +52,9 @@ void Zork::gameLost(string desc){
     gameOver("Game over.", "L!\n", desc);
 }
 
-void Zork::checkWin(){/*
+void Zork::checkWin(){
     if(game.currentRoom->type=="win")
-        gameWon("You have reached the magical destination");*/
+        gameWon("You have reached the magical destination");
 }
 
 void Zork::on_teleport_clicked()

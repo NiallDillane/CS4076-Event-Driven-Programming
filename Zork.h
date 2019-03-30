@@ -11,8 +11,8 @@
 #include <string>
 #include <vector>
 #include "Room.h"
-#include "item.h"
-#include "gameplay.h"
+#include "Item.h"
+#include "Gameplay.h"
 #include "Character.h"
 using namespace std;
 using std::vector;
@@ -29,27 +29,18 @@ public:
     explicit Zork(QWidget *parent = nullptr);
     ~Zork();
     void go(string direction);
-    gameplay game;
+    Gameplay game;
     Character player;
 private slots:
     void on_teleport_clicked();
-
     void on_goNorth_clicked();
-
     void on_goEast_clicked();
-
     void on_goSouth_clicked();
-
     void on_goWest_clicked();
-
     void on_map_clicked();
-
     void on_TakeX_clicked();
-
     void on_inventory_clicked();
-
     void on_TakeY_clicked();
-
     void on_TakeZ_clicked();
 
 private:
@@ -63,7 +54,6 @@ private:
     void tp();
     void createItems();
     void displayItems();
-
     void healthChange(int delta);
     void gameWon(string desc);
     void gameLost(string desc);

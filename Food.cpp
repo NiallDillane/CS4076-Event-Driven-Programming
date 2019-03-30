@@ -1,9 +1,9 @@
-#include "food.h"
+#include "Food.h"
 
-food::food(string desc, int val)
+Food::Food(string desc, int val)
     : Item(desc){
     this->healValue = val;
 }
-int food::getValue(){
+int Food::getValue(){
     return this->healValue;
 }

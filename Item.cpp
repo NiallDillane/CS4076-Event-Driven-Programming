@@ -1,4 +1,4 @@
-#include "item.h"
+#include "Item.h"
 
 Item::Item (string inDescription, int inWeightGrams, int inValue/**, int weaponCheck*/) {
 	description = inDescription;
@@ -33,10 +33,6 @@ void Item::setValue(int inValue)
 {
     value = inValue;
 }
-
-//int Item::getValue(){
-//    return this->value;
-//}
 
 string Item::getType(){
     return this->type;

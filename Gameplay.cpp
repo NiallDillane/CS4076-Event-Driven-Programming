@@ -1,12 +1,12 @@
-#include "gameplay.h"
+#include "Gameplay.h"
 
-gameplay::gameplay()
+Gameplay::Gameplay()
 {
     srand (time(0));
     createRooms();
 }
 
-QString gameplay::printWelcome(string name) {
+QString Gameplay::printWelcome(string name) {
     string output =
            string("\nWelcome, ") + (name) + "!" +
            string("\n<-- Your health is on the left\n") +
@@ -14,15 +14,15 @@ QString gameplay::printWelcome(string name) {
     return QString::fromStdString(output);
 }
 
-void gameplay::createRooms()  {
+void Gameplay::createRooms()  {
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
 
     a = new Room("a", "NA");
-        a->addItem(new food("Apple", 25));
-        a->addItem(new food("Spikes", -15));
+        a->addItem(new Food("Apple", 25));
+        a->addItem(new Food("Spikes", -15));
     b = new Room("b", "NA");
-        b->addItem(new food("Bomb", -50));
-        b->addItem(new food("Banana", 40));
+        b->addItem(new Food("Bomb", -50));
+        b->addItem(new Food("Banana", 40));
     c = new Room("c", "NA");
     d = new Room("d", "NA");
     e = new Room("e", "NA");
@@ -51,7 +51,7 @@ void gameplay::createRooms()  {
         currentRoom = a;
 }
 
-void gameplay::teleport(){
+void Gameplay::teleport(){
     int randomIndex=0;
     do
         randomIndex = rand() % (this->rooms).size();
@@ -59,7 +59,7 @@ void gameplay::teleport(){
     this->currentRoom = (this->rooms)[randomIndex];
 }
 
-QString gameplay::go(string direction) {
+QString Gameplay::go(string direction) {
     Room* nextRoom = this->currentRoom->nextRoom(direction);
     string output;
     if (nextRoom == NULL)
@@ -72,7 +72,7 @@ QString gameplay::go(string direction) {
     return QString::fromStdString(output);
 }
 
-QString gameplay::map(){
+QString Gameplay::map(){
     string output =
         string  ("            [j]        ") +
                 ("\n             |         ") +

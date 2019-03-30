@@ -1,4 +1,4 @@
-#include "zork.h"
+#include "Zork.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

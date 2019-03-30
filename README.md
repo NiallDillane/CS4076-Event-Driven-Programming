@@ -1,5 +1,6 @@
-# CS4076 Event Driven Programming
-## Zork clone written in C++ through Qt Creator
+# Zork clone 
+## Written in C++ through Qt Creator
+## 13132911 - Niall Dillane
 
 # Rules: 
 1. Moving North will hurt

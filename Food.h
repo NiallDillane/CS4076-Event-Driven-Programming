@@ -1,13 +1,13 @@
 #ifndef FOOD_H
 #define FOOD_H
 
-#include "item.h"
+#include "Item.h"
 
 
-class food : public Item
+class Food : public Item
 {
 public:
-    food(string, int);
+    Food(string, int);
     int healValue;
     virtual int getValue();
 };

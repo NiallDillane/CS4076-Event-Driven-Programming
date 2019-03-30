@@ -2,14 +2,14 @@
 #define GAMEPLAY_H
 #include <QMainWindow>
 #include "Room.h"
-#include "item.h"
-#include "food.h"
+#include "Item.h"
+#include "Food.h"
 using std::string;
 
-class gameplay
+class Gameplay
 {
 private:
-    gameplay();
+    Gameplay();
     Room *currentRoom;
     void createRooms();
     vector<Room*> rooms;

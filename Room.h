@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include <QMainWindow>
-#include "item.h"
+#include "Item.h"
 using namespace std;
 using std::vector;
 
