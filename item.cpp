@@ -19,6 +19,8 @@ Item::Item(string inDescription, string type, int value) {
 
 Item::Item(){}
 
+Item::~Item(){}
+
 void Item::setWeight(int inWeightGrams)
 {
     if (inWeightGrams > 9999 || inWeightGrams < 0)
@@ -32,9 +34,9 @@ void Item::setValue(int inValue)
     value = inValue;
 }
 
-int Item::getValue(){
-    return this->value;
-}
+//int Item::getValue(){
+//    return this->value;
+//}
 
 string Item::getType(){
     return this->type;

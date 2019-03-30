@@ -19,10 +19,10 @@ void gameplay::createRooms()  {
 
     a = new Room("a", "NA");
         a->addItem(new food("Apple", 25));
-        a->addItem(new Item("Spikes", "health", -15));
+        a->addItem(new food("Spikes", -15));
     b = new Room("b", "NA");
-        b->addItem(new Item("Bomb", "health", -50));
-        b->addItem(new Item("Banana", "health", 40));
+        b->addItem(new food("Bomb", -50));
+        b->addItem(new food("Banana", 40));
     c = new Room("c", "NA");
     d = new Room("d", "NA");
     e = new Room("e", "NA");

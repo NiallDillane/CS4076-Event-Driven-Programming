@@ -28,8 +28,8 @@ public:
     void addItem(Item *inItem);
     string displayItem();
     void removeItemFromRoom(string inString);
-    vector <Item> itemsInRoom;
-    Item getItemFromString(string itemDesc);
+    vector <Item*> itemsInRoom;
+    Item* getItemFromString(string itemDesc);
 };
 
 #endif

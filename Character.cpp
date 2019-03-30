@@ -17,17 +17,16 @@ string Character::getHealth(){
     return stm.str();
 }
 void Character::addItem(Item &item) {
-    itemsInCharacter.push_back(item);
+    itemsInCharacter.push_back(&item);
 }
 void Character::addItem(Item *item) {
-    itemsInCharacter.push_back(*item);
-    delete item;
+    itemsInCharacter.push_back(item);
 }
 
 string Character::longDescription(){
   string ret = this->description;
   ret += "\nInventory:\n";
-  for (vector<Item>::iterator i = itemsInCharacter.begin(); i != itemsInCharacter.end(); i++)
-    ret += "\t"+ to_string((i-itemsInCharacter.begin())+1) + ": " + (*i).getLongDescription();
+  for (vector<Item *>::iterator i = itemsInCharacter.begin(); i != itemsInCharacter.end(); i++)
+    ret += "\t"+ to_string((i-itemsInCharacter.begin())+1) + ": " + (*i)->getLongDescription();
   return ret;
 }

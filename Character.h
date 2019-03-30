@@ -12,7 +12,7 @@ using std::vector;
 class Character {
 private:
 	string description;
-    vector <Item> itemsInCharacter;
+    vector <Item *> itemsInCharacter;
 
 public:
     int health=50;

@@ -132,12 +132,12 @@ void Zork::takeItem(QPushButton* takeBtn){
     if (i != std::string::npos)
        itemText.erase(i, r.length());
 
-    Item toAdd = game.currentRoom->getItemFromString(itemText);
+    Item * toAdd = game.currentRoom->getItemFromString(itemText);
     player.addItem(toAdd);
     game.currentRoom->removeItemFromRoom(itemText);
     takeBtn->setVisible(false);
 
-    healthChange(toAdd.getValue());
+    healthChange((toAdd)->getValue());
 }
 
 void Zork::takeButtons(){
@@ -151,15 +151,15 @@ void Zork::takeButtons(){
     if(game.currentRoom->numberOfItems()!=0){
         if(game.currentRoom->numberOfItems()>0){
             ui->TakeX->setVisible(true);
-            ui->TakeX->setText(QString::fromStdString("Take " + game.currentRoom->itemsInRoom[0].getShortDescription()));
+            ui->TakeX->setText(QString::fromStdString("Take " + game.currentRoom->itemsInRoom[0]->getShortDescription()));
         }
         if(game.currentRoom->numberOfItems()>1){
             ui->TakeY->setVisible(true);
-            ui->TakeY->setText(QString::fromStdString("Take " + game.currentRoom->itemsInRoom[1].getShortDescription()));
+            ui->TakeY->setText(QString::fromStdString("Take " + game.currentRoom->itemsInRoom[1]->getShortDescription()));
         }
         if(game.currentRoom->numberOfItems()>2){
             ui->TakeZ->setVisible(true);
-            ui->TakeZ->setText(QString::fromStdString("Take " + game.currentRoom->itemsInRoom[2].getShortDescription()));
+            ui->TakeZ->setText(QString::fromStdString("Take " + game.currentRoom->itemsInRoom[2]->getShortDescription()));
         }
     }
 }

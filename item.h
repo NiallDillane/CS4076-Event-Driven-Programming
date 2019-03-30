@@ -20,11 +20,12 @@ public:
     Item (string description);
     Item (string inDescription, string type, int value);
     Item ();
+    virtual ~Item() = 0;
 	string getShortDescription();
     string getLongDescription();
 	int getWeight();
 	void setWeight(int weightGrams);
-    int getValue();
+    virtual int getValue() = 0;
     string getType();
     void setValue(int value);
 	int getWeaponCheck();

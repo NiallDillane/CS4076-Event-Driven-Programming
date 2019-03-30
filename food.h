@@ -9,7 +9,7 @@ class food : public Item
 public:
     food(string, int);
     int healValue;
-    int getValue();
+    virtual int getValue();
 };
 
 #endif // FOOD_H
