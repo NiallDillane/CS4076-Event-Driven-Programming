@@ -27,9 +27,8 @@ bool operator ==(Room const & r1, Room const & r2){
 bool Room::equals( Room r2){
     if(*this==r2)
         return true;
-    else {
+    else
         return false;
-    }
 }
 
 const string Room::shortDescription() {
