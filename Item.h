@@ -10,22 +10,23 @@ class Item {
 private:
 	string description;
 	string longDescription;
-	int weightGrams;
+    double weightGrams;
     int value;
     string type;
 	bool weaponCheck;
 
 public:
-    Item (string description, int inWeight, int inValue);
+    Item (string description, double inWeight);
     Item (string description);
     Item (string inDescription, string type, int value);
     Item ();
     virtual ~Item() = 0;
 	string getShortDescription();
     string getLongDescription();
-	int getWeight();
-	void setWeight(int weightGrams);
+    double getWeight();
+    void setWeight(double weightGrams);
     virtual int getValue() = 0;
+    virtual double getSodium() = 0;
     string getType();
     void setValue(int value);
 	int getWeaponCheck();

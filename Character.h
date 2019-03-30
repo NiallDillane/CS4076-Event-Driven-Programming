@@ -1,6 +1,7 @@
 #ifndef CHARACTER_H_
 #define CHARACTER_H_
 #include "Item.h"
+#include "food.h"
 
 #include <string>
 #include <sstream>

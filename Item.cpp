@@ -1,9 +1,8 @@
 #include "Item.h"
 
-Item::Item (string inDescription, int inWeightGrams, int inValue/**, int weaponCheck*/) {
+Item::Item (string inDescription, double inWeightGrams/**, int weaponCheck*/) {
 	description = inDescription;
-	setWeight(inWeightGrams);
-	value = inValue;
+    setWeight(inWeightGrams);
 	/**weaponCheck(isWeapon);*/
 }
 
@@ -21,7 +20,7 @@ Item::Item(){}
 
 Item::~Item(){}
 
-void Item::setWeight(int inWeightGrams)
+void Item::setWeight(double inWeightGrams)
 {
     if (inWeightGrams > 9999 || inWeightGrams < 0)
        cout << "weight invalid, must be 0<weight<9999" ;

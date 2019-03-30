@@ -18,11 +18,11 @@ void Gameplay::createRooms()  {
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
 
     a = new Room("a", "NA");
-        a->addItem(new Food("Apple", 25));
-        a->addItem(new Food("Spikes", -15));
+        a->addItem(new Food("Apple", 25, 1.2));
+        a->addItem(new Food("Pineapple", -15, 2.6));
     b = new Room("b", "NA");
-        b->addItem(new Food("Bomb", -50));
-        b->addItem(new Food("Banana", 40));
+        b->addItem(new Food("Durian", -50, 5.82));
+        b->addItem(new Food("Banana", 40, 0.5));
     c = new Room("c", "NA");
     d = new Room("d", "NA");
     e = new Room("e", "NA");

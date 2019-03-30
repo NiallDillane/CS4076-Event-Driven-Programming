@@ -88,7 +88,7 @@ void Room::removeItemFromRoom(string inString)
     int sizeItems = (static_cast<int>(this->itemsInRoom.size())); //TODO fix
     if (static_cast<int>(this->itemsInRoom.size() > 0)) {
        int x = (0);
-        for (int n = sizeItems; n > 0; n--) {
+       for (int n = sizeItems; n > 0; n--) {
             // compare inString with short description
             int tempFlag = inString.compare( itemsInRoom[x]->getShortDescription());
             if (tempFlag == 0) {
@@ -104,8 +104,7 @@ Item* Room::getItemFromString(string itemDesc){
     int sizeItems = (static_cast<int>(this->itemsInRoom.size()));
     if (static_cast<int>(this->itemsInRoom.size() > 0)) {
        int x = (0);
-        for (int n = sizeItems; n > 0; n--) {
-            // compare inString with short description
+       for (int n = sizeItems; n > 0; n--) {
             int tempFlag = itemDesc.compare( (*itemsInRoom[x]).getShortDescription());
             if (tempFlag == 0) {
                 return (*(itemsInRoom.begin()+x));

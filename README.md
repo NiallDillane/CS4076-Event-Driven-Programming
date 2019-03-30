@@ -11,3 +11,5 @@
 1. Zork is a friend class of Gameplay
 2. Food inherits from Item
 3. == operator is overloaded to check if 2 rooms are the same
+4. Template function in Character.cpp, to check highest health
+   boost and sodium content in your inventory.
