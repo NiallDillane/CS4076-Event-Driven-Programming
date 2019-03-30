@@ -8,3 +8,4 @@
 
 # Programming Techniques:
 1. Zork is a friend class of Gameplay
+2. Food inherits from Item
