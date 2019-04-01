@@ -1017,13 +1017,13 @@ background-image:url(:/resources/images/backpack.png);</string>
            <widget class="QPushButton" name="goNorth">
             <property name="minimumSize">
              <size>
-              <width>56</width>
-              <height>58</height>
+              <width>54</width>
+              <height>57</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>55</width>
+              <width>54</width>
               <height>55</height>
              </size>
             </property>
@@ -1979,13 +1979,13 @@ background-image:url(:/resources/images/portal.png);</string>
            <widget class="QPushButton" name="goSouth">
             <property name="minimumSize">
              <size>
-              <width>56</width>
-              <height>58</height>
+              <width>54</width>
+              <height>57</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>55</width>
+              <width>54</width>
               <height>55</height>
              </size>
             </property>
@@ -2005,13 +2005,13 @@ background-image:url(:/resources/images/arrow-south.png);</string>
            <widget class="QPushButton" name="goEast">
             <property name="minimumSize">
              <size>
-              <width>58</width>
+              <width>56</width>
               <height>55</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>55</width>
+              <width>56</width>
               <height>55</height>
              </size>
             </property>
@@ -2031,13 +2031,13 @@ background-image:url(:/resources/images/arrow-east.png);</string>
            <widget class="QPushButton" name="goWest">
             <property name="minimumSize">
              <size>
-              <width>58</width>
+              <width>56</width>
               <height>55</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>55</width>
+              <width>56</width>
               <height>55</height>
              </size>
             </property>
