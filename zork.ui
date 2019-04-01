@@ -1500,7 +1500,7 @@ background-image:url(:/resources/images/arrow-north.png);</string>
             </property>
             <property name="styleSheet">
              <string notr="true">background: transparent;
-background-image: url(:/resources/images/mapIconSmall.png);</string>
+background-image: url(:/resources/images/map-colour.png);</string>
             </property>
             <property name="text">
              <string/>
