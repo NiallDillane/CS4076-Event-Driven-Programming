@@ -14,7 +14,6 @@ Zork::Zork(QWidget *parent) :
     // Hide my take buttons by default
     ui->TakeX->setVisible(false);
     ui->TakeY->setVisible(false);
-    ui->TakeZ->setVisible(false);
 
     game.createRooms();
 
@@ -123,10 +122,6 @@ void Zork::on_TakeY_clicked()
     takeItem(ui->TakeY);
 }
 
-void Zork::on_TakeZ_clicked()
-{
-    takeItem(ui->TakeZ);
-}
 
 void Zork::takeItem(QPushButton* takeBtn){
     string itemText = (takeBtn->text()).toStdString();
@@ -147,7 +142,6 @@ void Zork::takeButtons(){
 
     ui->TakeX->setVisible(false);
     ui->TakeY->setVisible(false);
-    ui->TakeZ->setVisible(false);
 
     // check if room has (max 3) items
     // cycle through list of items, activating buttons and setting text to item description
@@ -159,10 +153,6 @@ void Zork::takeButtons(){
         if(game.currentRoom->numberOfItems()>1){
             ui->TakeY->setVisible(true);
             ui->TakeY->setText(QString::fromStdString("Take " + game.currentRoom->itemsInRoom[1]->getShortDescription()));
-        }
-        if(game.currentRoom->numberOfItems()>2){
-            ui->TakeZ->setVisible(true);
-            ui->TakeZ->setText(QString::fromStdString("Take " + game.currentRoom->itemsInRoom[2]->getShortDescription()));
         }
     }
 }

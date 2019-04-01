@@ -41,7 +41,6 @@ private slots:
     void on_TakeX_clicked();
     void on_inventory_clicked();
     void on_TakeY_clicked();
-    void on_TakeZ_clicked();
 
 private:
     Ui::Zork *ui;

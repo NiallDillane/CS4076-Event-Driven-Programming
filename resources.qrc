@@ -2,5 +2,14 @@
     <qresource prefix="/resources">
         <file>images/mapIcon.svg</file>
         <file>images/mapIconSmall.png</file>
+        <file>images/arrow-north.png</file>
+        <file>images/arrow-west.png</file>
+        <file>images/arrow-east.png</file>
+        <file>images/arrow-south.png</file>
+        <file>images/portal.png</file>
+        <file>images/backpack.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/mapIconSmall.png</file>
     </qresource>
 </RCC>
