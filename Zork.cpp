@@ -60,8 +60,8 @@ void Zork::on_teleport_clicked()
 {
     ui->outputText->append("Teleported");
     game.teleport();
-    ui->outputText->append(QString::fromStdString(game.currentRoom->longDescription()));
     takeButtons();
+    ui->outputText->append(QString::fromStdString(game.currentRoom->longDescription()));
     checkWin();
 }
 
@@ -143,7 +143,7 @@ void Zork::takeButtons(){
     ui->TakeX->setVisible(false);
     ui->TakeY->setVisible(false);
 
-    // check if room has (max 3) items
+    // check if room has (max 2) items
     // cycle through list of items, activating buttons and setting text to item description
     if(game.currentRoom->numberOfItems()!=0){
         if(game.currentRoom->numberOfItems()>0){

@@ -12,6 +12,7 @@
 #include <vector>
 #include "Room.h"
 #include "Item.h"
+#include "Food.h"
 #include "Gameplay.h"
 #include "Character.h"
 using namespace std;

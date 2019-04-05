@@ -99,7 +99,6 @@ void Room::removeItemFromRoom(string inString)
 }
 
 Item* Room::getItemFromString(string itemDesc){
-    Item *returnItem;
     int sizeItems = (static_cast<int>(this->itemsInRoom.size()));
     if (static_cast<int>(this->itemsInRoom.size() > 0)) {
        int x = (0);
