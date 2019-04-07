@@ -12,3 +12,7 @@ int Food::getValue(){
 double Food::getSodium(){
     return this->sodium;
 }
+
+void Food::operator ++(){
+    this->healValue+=20;
+}
