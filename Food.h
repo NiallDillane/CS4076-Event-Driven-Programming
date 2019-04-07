@@ -10,6 +10,7 @@ public:
     Food(string, int, double);
     virtual int getValue();
     virtual double getSodium();
+    void operator ++();
 private:
     int healValue;
     double sodium;
